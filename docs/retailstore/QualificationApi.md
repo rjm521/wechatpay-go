@@ -26,9 +26,9 @@ import (
 	"context"
 	"log"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/retailstore"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/rjm521/wechatpay-go/core"
+	"github.com/rjm521/wechatpay-go/services/retailstore"
+	"github.com/rjm521/wechatpay-go/utils"
 )
 
 func main() {
@@ -116,9 +116,9 @@ import (
 	"context"
 	"log"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/retailstore"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/rjm521/wechatpay-go/core"
+	"github.com/rjm521/wechatpay-go/services/retailstore"
+	"github.com/rjm521/wechatpay-go/utils"
 )
 
 func main() {

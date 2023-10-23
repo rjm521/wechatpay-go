@@ -15,9 +15,9 @@ import (
 	nethttp "net/http"
 	neturl "net/url"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/consts"
-	"github.com/wechatpay-apiv3/wechatpay-go/services"
+	"github.com/rjm521/wechatpay-go/core"
+	"github.com/rjm521/wechatpay-go/core/consts"
+	"github.com/rjm521/wechatpay-go/services"
 )
 
 type CallBackApiService services.Service

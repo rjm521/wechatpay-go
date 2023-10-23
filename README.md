@@ -1,7 +1,7 @@
 # 微信支付 API v3 Go SDK
-[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](https://pkg.go.dev/github.com/wechatpay-apiv3/wechatpay-go)
+[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](https://pkg.go.dev/github.com/rjm521/wechatpay-go)
 [![huntr](https://cdn.huntr.dev/huntr_security_badge_mono.svg)](https://huntr.dev)
-[![licence](https://badgen.net/github/license/wechatpay-apiv3/wechatpay-go)](https://github.com/wechatpay-apiv3/wechatpay-go/blob/main/LICENSE)
+[![licence](https://badgen.net/github/license/rjm521/wechatpay-go)](https://github.com/rjm521/wechatpay-go/blob/main/LICENSE)
 
 [微信支付 APIv3](https://wechatpay-api.gitbook.io/wechatpay-api-v3/) 官方Go语言客户端代码库。
 
@@ -28,9 +28,9 @@
 go mod init
 ```
 
-#### 2、无需 clone 仓库中的代码，直接在项目目录中执行： 
+#### 2、无需 clone 仓库中的代码，直接在项目目录中执行：
 ```shell
-go get -u github.com/wechatpay-apiv3/wechatpay-go
+go get -u github.com/rjm521/wechatpay-go
 ```
 来添加依赖，完成 `go.mod` 修改与 SDK 下载。
 
@@ -45,10 +45,10 @@ import (
 	"context"
 	"log"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/option"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/certificates"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/rjm521/wechatpay-go/core"
+	"github.com/rjm521/wechatpay-go/core/option"
+	"github.com/rjm521/wechatpay-go/services/certificates"
+	"github.com/rjm521/wechatpay-go/utils"
 )
 
 func main() {
@@ -73,7 +73,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("new wechat pay client err:%s", err)
 	}
-	
+
 	// 发送请求，以下载微信支付平台证书为例
 	// https://pay.weixin.qq.com/wiki/doc/apiv3/wechatpay/wechatpay5_1.shtml
 	svc := certificates.CertificatesApiService{Client: client}
@@ -102,7 +102,7 @@ func main() {
 ```go
 import (
 	"log"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/payments/jsapi"
+	"github.com/rjm521/wechatpay-go/services/payments/jsapi"
 )
 
 svc := jsapi.JsapiApiService{Client: client}
@@ -136,7 +136,7 @@ if err == nil {
 ```go
 import (
 	"log"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/payments/jsapi"
+	"github.com/rjm521/wechatpay-go/services/payments/jsapi"
 )
 
 svc := jsapi.JsapiApiService{Client: client}
@@ -160,9 +160,9 @@ if err == nil {
 ```go
 import (
 	"os"
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/consts"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/fileuploader"
+	"github.com/rjm521/wechatpay-go/core"
+	"github.com/rjm521/wechatpay-go/core/consts"
+	"github.com/rjm521/wechatpay-go/services/fileuploader"
 )
 
 file, err := os.Open("resource/demo.jpg")
@@ -210,8 +210,8 @@ result, err := client.Get(ctx, "https://api.mch.weixin.qq.com/v3/certificates")
 // 错误处理示例
 result, err := client.Get(ctx, "https://api.mch.weixin.qq.com/v3/certificates")
 if err != nil {
-	if core.IsAPIError(err, "INVALID_REQUEST") { 
-		// 处理无效请求 
+	if core.IsAPIError(err, "INVALID_REQUEST") {
+		// 处理无效请求
 	}
 	// 处理的其他错误
 }
@@ -247,7 +247,7 @@ ctx := context.Background()
 opts := []core.ClientOption{
 	option.WithWechatPayAutoAuthCipher(mchID, mchCertificateSerialNumber, mchPrivateKey, mchAPIv3Key),
 }
-client, err := core.NewClient(ctx, opts...)	
+client, err := core.NewClient(ctx, opts...)
 // 2. 获取商户号对应的微信支付平台证书访问器
 certificateVisitor := downloader.MgrInstance().GetCertificateVisitor(mchID)
 // 3. 使用证书访问器初始化 `notify.Handler`
@@ -430,15 +430,15 @@ import (
 	"path/to/your/custom_signer"
 	"path/to/your/custom_verifier"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/auth/credentials"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/auth/validators"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/option"
+	"github.com/rjm521/wechatpay-go/core"
+	"github.com/rjm521/wechatpay-go/core/auth/credentials"
+	"github.com/rjm521/wechatpay-go/core/auth/validators"
+	"github.com/rjm521/wechatpay-go/core/option"
 )
 
 func NewCustomClient(ctx context.Context, mchID string) (*core.Client, error) {
 	signer := &custom_signer.CustomSigner{
-		// ... 
+		// ...
 	}
 	verifier := &custom_verifier.CustomVerifier{
 		// ...
@@ -466,7 +466,7 @@ func NewCustomClient(ctx context.Context, mchID string) (*core.Client, error) {
 - 通过代码或者其他方式，简要的说明是如何实现的，或者它会是如何使用
 - 是否影响现有的接口
 
-[#35](https://github.com/wechatpay-apiv3/wechatpay-go/issues/35) 是一个很好的参考。
+[#35](https://github.com/rjm521/wechatpay-go/issues/35) 是一个很好的参考。
 
 ### 测试
 
@@ -485,7 +485,7 @@ go test -gcflags=all=-l ./...
 ```
 
 ## 联系微信支付
-如果你发现了 BUG，或者需要的功能还未支持，或者有任何疑问、建议，欢迎通过 [issue](https://github.com/wechatpay-apiv3/wechatpay-go/issues) 反馈。
+如果你发现了 BUG，或者需要的功能还未支持，或者有任何疑问、建议，欢迎通过 [issue](https://github.com/rjm521/wechatpay-go/issues) 反馈。
 
 也欢迎访问微信支付的 [开发者社区](https://developers.weixin.qq.com/community/pay)。
 

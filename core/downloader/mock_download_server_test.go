@@ -16,9 +16,9 @@ import (
 	"time"
 
 	"github.com/agiledragon/gomonkey"
+	"github.com/rjm521/wechatpay-go/core/consts"
+	"github.com/rjm521/wechatpay-go/utils"
 	"github.com/stretchr/testify/require"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/consts"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
 )
 
 const (

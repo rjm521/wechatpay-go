@@ -10,11 +10,11 @@
 
 ### 如何下载微信支付平台证书
 
-现在本 SDK 已经提供了命令行工具供开发者使用。 
+现在本 SDK 已经提供了命令行工具供开发者使用。
 
 首先使用 `go` 指令下载命令行工具
 ```shell
-go get -u github.com/wechatpay-apiv3/wechatpay-go/cmd/wechatpay_download_certs
+go get -u github.com/rjm521/wechatpay-go/cmd/wechatpay_download_certs
 ```
 然后执行 `wechatpay_download_certs` 即可下载微信支付平台证书到当前目录
 ```shell
@@ -57,7 +57,7 @@ func (mgr *CertificateDownloaderMgr) GetCertificateVisitor(mchID string) core.Ce
 
 ### 证书和回调解密需要的AesGcm解密在哪里？
 
-请参考 [aes.go](https://github.com/wechatpay-apiv3/wechatpay-go/blob/main/utils/aes.go) 和 [aes_test.go](https://github.com/wechatpay-apiv3/wechatpay-go/blob/main/utils/aes_test.go)。
+请参考 [aes.go](https://github.com/rjm521/wechatpay-go/blob/main/utils/aes.go) 和 [aes_test.go](https://github.com/rjm521/wechatpay-go/blob/main/utils/aes_test.go)。
 
 由于 SDK 已经提供了微信支付平台证书下载器`downloader.CertificateDownloader`以及回调处理器`notify.Handler`，这两者会完成所有的解析与解密工作。因此除非你想要自定义实现，否则你应该不需要用到`aes.go`中提供的方法。
 
@@ -85,7 +85,7 @@ client, err := core.NewClient(ctx, opts...)
 ```
 
 > **注意**：第一步中应正常对应答验证签名
-> 
+>
 > **注意**：开发者在下载文件之后，应使用第一步获取的账单摘要校验文件的完整性
 
 ### 如何查看 HTTP 请求的 Request 信息
@@ -100,5 +100,5 @@ var (
 result, err = client.Get(ctx, "")
 
 request = result.Request
-response = result.Response 
+response = result.Response
 ```

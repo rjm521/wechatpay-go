@@ -15,10 +15,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/option"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/payments/h5"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/rjm521/wechatpay-go/core"
+	"github.com/rjm521/wechatpay-go/core/option"
+	"github.com/rjm521/wechatpay-go/services/payments/h5"
+	"github.com/rjm521/wechatpay-go/utils"
 )
 
 func ExampleH5ApiService_CloseOrder() {

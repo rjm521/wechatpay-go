@@ -14,10 +14,10 @@ import (
 	"context"
 	"log"
 
-	"github.com/wechatpay-apiv3/wechatpay-go/core"
-	"github.com/wechatpay-apiv3/wechatpay-go/core/option"
-	"github.com/wechatpay-apiv3/wechatpay-go/services/profitsharing"
-	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/rjm521/wechatpay-go/core"
+	"github.com/rjm521/wechatpay-go/core/option"
+	"github.com/rjm521/wechatpay-go/services/profitsharing"
+	"github.com/rjm521/wechatpay-go/utils"
 )
 
 func ExampleOrdersApiService_CreateOrder() {
