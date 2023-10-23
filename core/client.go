@@ -163,10 +163,10 @@ func (client *Client) Delete(ctx context.Context, requestURL string, requestBody
 
 // Upload 向微信支付发送上传文件
 // 推荐使用 services/fileuploader 中各上传接口的实现
-func (client *Client) Upload(ctx context.Context, requestURL, meta, reqBody, formContentType string) (
+func (client *Client) Upload(ctx context.Context, header http.Header, requestURL, meta, reqBody, formContentType string) (
 	*APIResult, error,
 ) {
-	return client.doRequest(ctx, http.MethodPost, requestURL, nil, formContentType, strings.NewReader(reqBody), meta)
+	return client.doRequest(ctx, http.MethodPost, requestURL, header, formContentType, strings.NewReader(reqBody), meta)
 }
 
 func (client *Client) requestWithJSONBody(ctx context.Context, method, requestURL string, body interface{}) (
